@@ -2,13 +2,18 @@
 ###################################################
 ## Read Data into R
 ###################################################
-
-# Get & set working Directory
+# Best Practices for reading in data
+# 1. Get & set working Directory
 getwd()
 setwd("~/Desktop/Github/scripts/R/dataset")
 
 # csv
 dataset <- read.csv("winequality-red.csv", sep = ";")
+
+# 2. Set input file and load in
+input_file <- "~/Desktop/Github/scripts/R/dataset/winequality-red.csv"
+input_data <- read.csv(input_file, sep = ";")
+
 
 # read in csv with col names
 dataset <- read.csv("winequality-red.csv", sep = ";",
