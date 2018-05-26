@@ -8,7 +8,11 @@ getwd()
 setwd("~/Desktop/Github/scripts/R/dataset")
 
 # csv
-dataset <- read.csv("winequality-red.csv", sep = ";" )
+dataset <- read.csv("winequality-red.csv", sep = ";")
+
+# read in csv with col names
+dataset <- read.csv("winequality-red.csv", sep = ";",
+                    col.names = c(1,2,3,4,5,6,7,8,9,10,11,12))
 
 # load data from URL
 df <- read.csv(url("https://raw.githubusercontent.com/justmarkham/pandas-videos/master/data/imdb_1000.csv"))
