@@ -1,2 +1,2 @@
 # Python Packages
-- Pandas
+- Pandas: Documentation ( http://pandas-docs.github.io/pandas-docs-travis/ )
