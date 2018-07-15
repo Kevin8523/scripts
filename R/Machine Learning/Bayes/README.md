@@ -37,6 +37,7 @@ Using a beta distribution to fit on all observation to improve each individually
 Step by Step Guide
 1. Estimate a prior from all your data
 	* Pick alpha0 and beta0 to mimic the distribution of the historical data
+	
 2. Use that distribution as a prior for each individual estimate
 
 
