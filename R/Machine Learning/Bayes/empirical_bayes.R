@@ -12,6 +12,7 @@ R version: 3.5.1: Feather spray # version
 # Beta Distribution
 ###################
 library(dplyr)
+library(ggplot2)
 
 # 1,000,000 Trials
 num_trials <- 10e6
@@ -35,7 +36,6 @@ hit_100 <- simulations %>%
 hit_100
 
 
-library(ggplot2)
 # Filter to hits of 60, 80, 100 and plot the distribution
 # Shows the True avg with Hits / 300 at bats & probability density
 simulations %>%
@@ -53,6 +53,7 @@ simulations %>%
 library(dplyr)
 library(tidyr)
 library(Lahman) # Baseball dataset
+library(ggplot2)
 
 # Dataset: AB = At bats , H = Hits, antijoin to remove pitchers
 
@@ -139,6 +140,40 @@ ggplot(career_eb, aes(x=average, y=eb_estimate, color = AB)) +
 ####################
 # Credible Intervals
 ####################
+library(dplyr)
+library(tidyr)
+library(Lahman)
+
+# Filter out pitchers (Just want batters)
+career <- Batting %>%
+  filter(AB > 0) %>%
+  anti_join(Pitching, by = "playerID") %>%
+  group_by(playerID) %>%
+  summarize(H = sum(H), AB = sum(AB)) %>%
+  mutate(average = H / AB)
+
+# Include names along with the player IDs
+career <- Master %>%
+  tbl_df() %>%
+  dplyr::select(playerID, nameFirst, nameLast) %>%
+  unite(name, nameFirst, nameLast, sep = " ") %>%
+  inner_join(career, by = "playerID")
+
+# values estimated by maximum likelihood above
+alpha0 <- 101.4
+beta0 <- 287.3
+
+career_eb <- career %>%
+  mutate(eb_estimate = (H + alpha0) / (AB + alpha0 + beta0))
+
+
+
+
+
+
+
+
+
 
 
 

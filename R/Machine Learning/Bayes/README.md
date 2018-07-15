@@ -37,7 +37,15 @@ Using a beta distribution to fit on all observation to improve each individually
 Step by Step Guide
 1. Estimate a prior from all your data
 	* Pick alpha0 and beta0 to mimic the distribution of the historical data
-	
 2. Use that distribution as a prior for each individual estimate
+
+## Credible Intervals:
+Gives some percetage (e.g 95%) of the posterior distribution lies within a particular region
+* Point estimate -  New estimate using prior information
+* alpha1 & beta1 are the posterior shape parameters for each player's distribution
+* Peak of beta distribution: (alpha - 1) / (alpha + beta - 2); In emprical bayes estimate its alpha / (alpha + beta), but they become indistinguishable for a large alpha and beta
+* Credible interval, Clopper-Pearson interval, and Jeffreys interval all start looking identical when:
+	+ the evidence is more informative (large n), or
+	+ the prior is less informative (small alpha0, small beta0)
 
 
