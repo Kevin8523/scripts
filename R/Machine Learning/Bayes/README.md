@@ -2,8 +2,11 @@
 
 ## Overview:
 	
-	* Bayes Theorem
-	* Beta Distribution
+* Bayes Theorem
+* Beta Distribution
+* Empirical Bayes Estimation
+* Credible Intervals
+
 
 ## Bayes Theorem:
 
@@ -49,5 +52,10 @@ The Credible Interval: An interval of θ that has a 95% chance (or other) of con
 * Credible interval, Clopper-Pearson interval, and Jeffreys interval all start looking identical when:
 	+ the evidence is more informative (large n), or
 	+ the prior is less informative (small alpha0, small beta0)
+
+## Hypothesis Testing:
+* Posterior Error Probabilities (PEP): Probability doesn't belong
+* False Discovery Rate - Fraction which was falsely included
+* q-value - cumulative mean, used to control for % FDR
 
 
