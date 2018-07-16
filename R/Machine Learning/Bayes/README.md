@@ -40,9 +40,11 @@ Step by Step Guide
 2. Use that distribution as a prior for each individual estimate
 
 ## Credible Intervals:
-Gives some percetage (e.g 95%) of the posterior distribution lies within a particular region
+Gives some percetage (e.g 95%) of the posterior distribution lies within a particular region <br/>
+The Credible Interval: An interval of θ that has a 95% chance (or other) of containing the true value of θ given the several assumptions underlying the problem.
+
 * Point estimate -  New estimate using prior information
-* alpha1 & beta1 are the posterior shape parameters for each player's distribution
+* alpha1 & beta1: The posterior shape parameters for each player's distribution
 * Peak of beta distribution: (alpha - 1) / (alpha + beta - 2); In emprical bayes estimate its alpha / (alpha + beta), but they become indistinguishable for a large alpha and beta
 * Credible interval, Clopper-Pearson interval, and Jeffreys interval all start looking identical when:
 	+ the evidence is more informative (large n), or
