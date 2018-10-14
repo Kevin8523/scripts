@@ -427,3 +427,47 @@ career_eb %>%
 ######################
 # Bayesian A/B Testing
 ######################
+
+library(dplyr)
+library(tidyr)
+library(Lahman)
+library(ggplot2)
+
+#----------------------------------------------------
+# Step0: Setup dataset for analysis
+
+# Grab career batting average of non-pitchers
+# (allow players that have pitched <= 3 games, like Ty Cobb)
+pitchers <- Pitching %>%
+  group_by(playerID) %>%
+  summarize(gamesPitched = sum(G)) %>%
+  filter(gamesPitched > 3)
+
+# Filter out pitchers (Just want batters)
+career <- Batting %>%
+  filter(AB > 0) %>%
+  anti_join(pitchers, by = "playerID") %>%
+  group_by(playerID) %>%
+  summarize(H = sum(H), AB = sum(AB)) %>%
+  mutate(average = H / AB)
+
+# Include names along with the player IDs
+career <- Master %>%
+  tbl_df() %>%
+  dplyr::select(playerID, nameFirst, nameLast) %>%
+  unite(name, nameFirst, nameLast, sep = " ") %>%
+  inner_join(career, by = "playerID")
+
+# values estimated by maximum likelihood 
+alpha0 <- 101.4
+beta0 <- 287.3
+
+# Posterior Distribution - Getting the alpha1 & beta1
+career_eb <- career %>%
+  mutate(eb_estimate = (H + alpha0) / (AB + alpha0 + beta0),
+         alpha1 = H + alpha0,
+         beta1 = AB - H + beta0)
+#----------------------------------------------------
+
+
+
