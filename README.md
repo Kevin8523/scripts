@@ -9,5 +9,8 @@ Practice in Python, R, Etc
 2. a. If file is in the directory, add file name
 2. b. If file is in a child directory, add the URL
 
+- How to setup a virtual env
+
+- How to use docker
 
 
